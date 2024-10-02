@@ -3,6 +3,11 @@ p {
   font-size: 23px;
 }
 
+.js-display {
+  font-family: Arial;
+  font-size: 18px;
+}
+
 .todo-grid,
 .todo-input-grid {
   display: grid;

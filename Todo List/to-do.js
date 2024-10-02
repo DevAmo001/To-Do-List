@@ -17,20 +17,35 @@ function addOnKeydown(event) {
  function renderTodoList() {
   let todoListHTML = '';
 
-  for (let i = 0; i < todo.length; i++) {
-    const valueObject = todo[i];
+  todo.forEach(function(valueObject, index) {
     const { name, dueDate } = valueObject;
     const html = `
       <div>${name}</div>
       <div>${dueDate} </div>
       <button onclick="
-          todo.splice(${i}, 1);
+          todo.splice(${index}, 1);
           renderTodoList();
       " class="delete-todo-btn">Delete</button>
     `;
     todoListHTML += html;
-  }
+  });
   console.log(todoListHTML);
+
+  /*
+    for (let i = 0; i < todo.length; i++) {
+      const valueObject = todo[i];
+      const { name, dueDate } = valueObject;
+      const html = `
+        <div>${name}</div>
+        <div>${dueDate} </div>
+        <button onclick="
+            todo.splice(${i}, 1);
+            renderTodoList();
+        " class="delete-todo-btn">Delete</button>
+      `;
+      todoListHTML += html;
+    }
+  */
 
   document.querySelector('.js-display')
   .innerHTML = todoListHTML;
