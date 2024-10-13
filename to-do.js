@@ -17,7 +17,7 @@ function addOnKeydown(event) {
  function renderTodoList() {
   let todoListHTML = '';
 
-  todo.forEach(function(valueObject, index) {
+  todo.forEach((valueObject, index) => {
     const { name, dueDate } = valueObject;
     const html = `
       <div>${name}</div>
