@@ -12,6 +12,11 @@ function addOnKeydown(event) {
     dueDate: '2022-12-22'
   }];
 
+  document.querySelector('.js-add-todo-button')
+  .addEventListener('click', () => {
+    addTodo();
+  });
+
   renderTodoList();
 
  function renderTodoList() {
@@ -22,34 +27,25 @@ function addOnKeydown(event) {
     const html = `
       <div>${name}</div>
       <div>${dueDate} </div>
-      <button onclick="
-          todo.splice(${index}, 1);
-          renderTodoList();
-      " class="delete-todo-btn">Delete</button>
+      <button class="delete-todo-btn js-delete-button">Delete</button>
     `;
     todoListHTML += html;
   });
   console.log(todoListHTML);
 
-  /*
-    for (let i = 0; i < todo.length; i++) {
-      const valueObject = todo[i];
-      const { name, dueDate } = valueObject;
-      const html = `
-        <div>${name}</div>
-        <div>${dueDate} </div>
-        <button onclick="
-            todo.splice(${i}, 1);
-            renderTodoList();
-        " class="delete-todo-btn">Delete</button>
-      `;
-      todoListHTML += html;
-    }
-  */
-
   document.querySelector('.js-display')
   .innerHTML = todoListHTML;
+
+  document.querySelectorAll('.js-delete-button')
+  .forEach((deleteButton, index) => {
+    deleteButton.addEventListener('click', () => {
+      todo.splice(index, 1);
+      renderTodoList();
+    });
+  });
 }
+
+
 
 function addTodo() {
   const addBtn = document.querySelector('.js-input-value');
